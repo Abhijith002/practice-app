@@ -1,0 +1,27 @@
+select:focus, select:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+select {
+width: 100%;
+padding: 10px;
+border-radius: 20px;
+}
+
+.vehicleInfo::after {
+  content: '';
+  display: block;
+  background-color: #c38d9e;
+  height: 2px;
+  width: 0%;
+}
+
+.vehicleInfoAft::after {
+  content: '';
+  display: block;
+  background-color: #c38d9e;
+  height: 2px;
+  width: 100%;
+  transition: all ease-in-out 500ms;
+}

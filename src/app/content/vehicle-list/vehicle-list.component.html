@@ -1,0 +1,12 @@
+<p ngClass="{{hoverClass}}">Vehicle Id: {{ selectedVehicleId }}</p>
+<div class="select">
+  <select name="slct" id="slct" (change)="onVehicleSelect($event.target.value)"
+   (focus)="onVehicleFocus()">
+    <option *ngFor="let vehicle of vehicles" value="{{vehicle.vehicleId}}">
+      {{ vehicle.vehicleId }}
+    </option>
+  </select>
+</div>
+<hr>
+<app-vehicle-details></app-vehicle-details>
+
