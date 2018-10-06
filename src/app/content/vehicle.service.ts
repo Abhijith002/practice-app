@@ -1,5 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Vehicle } from './vehicle-list/vehicle.model';
+import { Subject } from 'rxjs/Subject';
 
 export class VehicleService {
   private vehicles: Vehicle[] = [
@@ -9,16 +10,18 @@ export class VehicleService {
     new Vehicle(1114, 1114, 'KA17 9457K', 'Bus1, Bus2, Bus3', 80),
     new Vehicle(1115, 1115, 'KA17 9458K', 'Bus1, Bus2, Bus3', 90)
   ];
-  selectedVehicleID = this.vehicles[0].vehicleId;
-  selectedVehicleDetails = this.vehicles[0];
-  vehicleSelected = new EventEmitter();
+  vehicleSelected = new Subject;
   constructor() { }
 
   getVehicleList() {
     return this.vehicles.slice();
   }
 
-  getSelectedVehicle(vehicleID) {
-    this.selectedVehicleDetails = this.vehicles.find(v => v.vehicleId === Number(vehicleID));
+  getSelectedVehicle(vehicleID?: number) {
+    if (vehicleID) {
+      return this.vehicles.find(v => v.vehicleId === vehicleID);
+    } else {
+      return this.vehicles[0];
+    }
   }
 }

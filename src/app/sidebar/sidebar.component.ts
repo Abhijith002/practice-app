@@ -13,8 +13,6 @@ export class SidebarComponent implements OnInit {
       () => this.sidebartoggle.sidebarToggleStatus()
     );
   }
-  onAboutClick() {
-  }
   getClass() {
     let sidebarClass;
     if (this.sidebartoggle.activeStatus === true) {

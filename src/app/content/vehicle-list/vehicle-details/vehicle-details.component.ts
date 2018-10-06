@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Vehicle } from '../vehicle.model';
 import { VehicleService } from '../../vehicle.service';
 
@@ -10,13 +10,13 @@ import { VehicleService } from '../../vehicle.service';
 export class VehicleDetailsComponent implements OnInit {
   vehicleDetail: Vehicle;
   constructor(private vehicle: VehicleService) {
-    this.vehicleDetail = this.vehicle.selectedVehicleDetails;
+    this.vehicleDetail = this.vehicle.getSelectedVehicle();
    }
 
   ngOnInit() {
     this.vehicle.vehicleSelected.subscribe(
-    () => { this.vehicle.getSelectedVehicle(this.vehicle.selectedVehicleID);
-    this.vehicleDetail = this.vehicle.selectedVehicleDetails; }
+    (vehicleId: number) => {
+      this.vehicleDetail = this.vehicle.getSelectedVehicle(vehicleId); }
     );
   }
 }

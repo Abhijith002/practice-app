@@ -1,3 +1,5 @@
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +12,11 @@ import { VehicleDetailsComponent } from './content/vehicle-list/vehicle-details/
 import { TemperatureTrackerComponent } from './content/temperature-tracker/temperature-tracker.component';
 import { LocationTrackerComponent } from './content/location-tracker/location-tracker.component';
 import { SidebarToggle } from './sidebar.service';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
+import { ApprootsModule } from './approots/approots.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +27,18 @@ import { SidebarToggle } from './sidebar.service';
     VehicleListComponent,
     VehicleDetailsComponent,
     TemperatureTrackerComponent,
-    LocationTrackerComponent
+    LocationTrackerComponent,
+    AboutComponent,
+    ContactComponent,
+    LoginComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ApprootsModule
   ],
-  providers: [SidebarToggle],
+  providers: [SidebarToggle, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

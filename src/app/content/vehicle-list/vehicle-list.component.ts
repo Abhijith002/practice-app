@@ -15,14 +15,14 @@ export class VehicleListComponent implements OnInit {
 
   ngOnInit() {
     this.vehicles = this.vehicle.getVehicleList();
-    this.selectedVehicleId = this.vehicle.selectedVehicleID;
+    this.selectedVehicleId = this.vehicles[0].vehicleId;
     this.hoverClass = 'vehicleInfo';
   }
 
   onVehicleSelect(vehicleIdL) {
     this.hoverClass = 'vehicleInfo';
-    this.vehicle.selectedVehicleID = this.selectedVehicleId = vehicleIdL;
-    this.vehicle.vehicleSelected.emit();
+    this.selectedVehicleId = +vehicleIdL;
+    this.vehicle.vehicleSelected.next(+vehicleIdL);
   }
 
   onVehicleFocus() {
