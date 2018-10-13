@@ -17,6 +17,9 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { ApprootsModule } from './approots/approots.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { FilterPipe } from './content/vehicle-list/filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterdistributorsPipe } from './content/vehicle-list/filterdistributors.pipe';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,15 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    FilterPipe,
+    FilterdistributorsPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ApprootsModule
+    ApprootsModule,
+    HttpClientModule
   ],
   providers: [SidebarToggle, AuthGuard, AuthService],
   bootstrap: [AppComponent]

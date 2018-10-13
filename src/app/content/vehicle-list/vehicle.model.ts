@@ -1,4 +1,5 @@
 export class Vehicle {
-  constructor(public vehicleId: number, public routeId: number,
-    public vehicleNo: string, public stops: string, public numberOfCartons: number) {}
+  constructor(public VehicleId: number, public DistributorId: number, public UserId: number,
+    public VehicleRegistrartion: string, public VehicleName: string, public photo: string,
+    public Manufacturer?: string) {}
 }

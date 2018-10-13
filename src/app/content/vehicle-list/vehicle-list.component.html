@@ -1,12 +1,48 @@
-<p ngClass="{{hoverClass}}">Vehicle Id: {{ selectedVehicleId }}</p>
+<!-- <p ngClass="{{hoverClass}}">Vehicle Id: {{ selectedVehicleId }}</p>
 <div class="select">
+    <input type="text" class="form-control" (keyup)="onKeyUp($event)" [(ngModel)]="filterString"/>
+    <br>
   <select name="slct" id="slct" (change)="onVehicleSelect($event.target.value)"
-   (focus)="onVehicleFocus()">
-    <option *ngFor="let vehicle of vehicles" value="{{vehicle.vehicleId}}">
-      {{ vehicle.vehicleId }}
+   (focus)="onVehicleFocus()" #slct>
+    <option *ngFor="let vehicle of vehicles | filter:filterString" value="{{vehicle.vehicleId}}">
+      {{ vehicle.vehicleId }} | {{ vehicle.vehicleNo }}
     </option>
   </select>
 </div>
+<hr> -->
+<!-- <h6>Select distributor and vehicle</h6> -->
+<div class="dropdown" style="width: 100%">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false" style="width: 100%">
+    {{ selectedDistributorName }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 100%">
+      <div class="px-4 py-3">
+    <input type="text" class="form-control" [(ngModel)]="filterDistributors" />
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" style="cursor: pointer;" *ngFor="let distributor of distributors | filterdistributors:filterDistributors"
+    id="{{distributor.distributorID}}" name="distributor.distributorName"
+      (click)="onDistributorSelect($event.target.id, $event.target.text)">
+      {{ distributor.distributorName }}
+    </a>
+    </div>
+  </div>
+</div>
+<div class="dropdown" style="margin-top: 1rem; width: 100%">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false" style="width: 100%" [disabled]="disableVehicleDrop">
+    {{ selectedVehicleNo }}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="width: 100%">
+    <div class="px-4 py-3">
+    <input class="form-control" type="text" [(ngModel)]="filterString" />
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" style="cursor: pointer;" *ngFor="let vehicle of vehicles | filter:filterString" id="{{vehicle.VehicleId}}"
+      (click)="onVehicleSelect($event.target.id, $event.target.text)">
+      {{ vehicle.VehicleRegistrartion }}
+    </a>
+  </div>
+  </div>
+</div>
 <hr>
 <app-vehicle-details></app-vehicle-details>
-
