@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.authService.login();
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   }
 
 }
